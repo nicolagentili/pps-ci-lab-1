@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuite 
-errors="0" failures="0" hostname="irst-7485" name="u07lab.SetFunSpec" tests="3" time="0.06" timestamp="2018-04-26T10:35:17">
+errors="0" failures="0" hostname="irst-7485" name="u07lab.SetFunSpec" tests="3" time="0.064" timestamp="2018-04-26T10:51:01">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment">
     </property>
@@ -92,13 +92,13 @@ errors="0" failures="0" hostname="irst-7485" name="u07lab.SetFunSpec" tests="3" 
     <property name="sun.cpu.isalist" value="amd64"> </property>
   </properties>
   <testcase 
-  name="A cart when empty should have size 0" classname="u07lab.SetFunSpec" time="0.025">
+  name="A cart when empty should have size 0" classname="u07lab.SetFunSpec" time="0.026">
 </testcase>
   <testcase 
-  name="A cart when empty should have totalCost 0" classname="u07lab.SetFunSpec" time="0.0">
+  name="A cart when empty should have totalCost 0" classname="u07lab.SetFunSpec" time="0.001">
 </testcase>
   <testcase 
-  name="A cart adding two times should have size 2" classname="u07lab.SetFunSpec" time="0.001">
+  name="A cart adding two times should have size 2" classname="u07lab.SetFunSpec" time="0.0">
 </testcase>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
