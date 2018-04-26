@@ -1,0 +1,64 @@
+products:
+   C:\Universita\PPS\pps-ci-lab-1\src\main\java\NicolaClass.java -> C:\Universita\PPS\pps-ci-lab-1\build\classes\scala\scoverage\NicolaClass.class
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Logger.scala -> C:\Universita\PPS\pps-ci-lab-1\build\classes\scala\scoverage\u07lab\BasicLogger$.class
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Logger.scala -> C:\Universita\PPS\pps-ci-lab-1\build\classes\scala\scoverage\u07lab\BasicLogger.class
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Logger.scala -> C:\Universita\PPS\pps-ci-lab-1\build\classes\scala\scoverage\u07lab\Logger.class
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Logger.scala -> C:\Universita\PPS\pps-ci-lab-1\build\classes\scala\scoverage\u07lab\NullLogger$.class
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Logger.scala -> C:\Universita\PPS\pps-ci-lab-1\build\classes\scala\scoverage\u07lab\NullLogger.class
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> C:\Universita\PPS\pps-ci-lab-1\build\classes\scala\scoverage\u07lab\BasicCart$.class
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> C:\Universita\PPS\pps-ci-lab-1\build\classes\scala\scoverage\u07lab\BasicCart.class
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> C:\Universita\PPS\pps-ci-lab-1\build\classes\scala\scoverage\u07lab\BasicCatalog.class
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> C:\Universita\PPS\pps-ci-lab-1\build\classes\scala\scoverage\u07lab\BasicWarehouse.class
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> C:\Universita\PPS\pps-ci-lab-1\build\classes\scala\scoverage\u07lab\Cart.class
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> C:\Universita\PPS\pps-ci-lab-1\build\classes\scala\scoverage\u07lab\Catalog.class
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> C:\Universita\PPS\pps-ci-lab-1\build\classes\scala\scoverage\u07lab\Item$.class
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> C:\Universita\PPS\pps-ci-lab-1\build\classes\scala\scoverage\u07lab\Item.class
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> C:\Universita\PPS\pps-ci-lab-1\build\classes\scala\scoverage\u07lab\ItemDetails$.class
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> C:\Universita\PPS\pps-ci-lab-1\build\classes\scala\scoverage\u07lab\ItemDetails.class
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> C:\Universita\PPS\pps-ci-lab-1\build\classes\scala\scoverage\u07lab\Price$.class
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> C:\Universita\PPS\pps-ci-lab-1\build\classes\scala\scoverage\u07lab\Price.class
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> C:\Universita\PPS\pps-ci-lab-1\build\classes\scala\scoverage\u07lab\Product$.class
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> C:\Universita\PPS\pps-ci-lab-1\build\classes\scala\scoverage\u07lab\Product.class
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> C:\Universita\PPS\pps-ci-lab-1\build\classes\scala\scoverage\u07lab\Shopping.class
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> C:\Universita\PPS\pps-ci-lab-1\build\classes\scala\scoverage\u07lab\TryShopping$.class
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> C:\Universita\PPS\pps-ci-lab-1\build\classes\scala\scoverage\u07lab\TryShopping$delayedInit$body.class
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> C:\Universita\PPS\pps-ci-lab-1\build\classes\scala\scoverage\u07lab\TryShopping.class
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> C:\Universita\PPS\pps-ci-lab-1\build\classes\scala\scoverage\u07lab\Warehouse.class
+binary dependencies:
+   C:\Universita\PPS\pps-ci-lab-1\src\main\java\NicolaClass.java -> C:\Program Files\Java\jdk1.8.0_151\jre\lib\rt.jar
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Logger.scala -> C:\Program Files\Java\jdk1.8.0_151\jre\lib\rt.jar
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Logger.scala -> C:\Users\nicola.gentili\.gradle\caches\modules-2\files-2.1\org.scala-lang\scala-library\2.12.2\fe9780170207ebdabd4ac5bb335c82bd0aead480\scala-library-2.12.2.jar
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Logger.scala -> C:\Users\nicola.gentili\.gradle\caches\modules-2\files-2.1\org.scoverage\scalac-scoverage-runtime_2.12\1.3.1\b51a70c1da41e07de83506ea12dc25fb994740a5\scalac-scoverage-runtime_2.12-1.3.1.jar
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> C:\Program Files\Java\jdk1.8.0_151\jre\lib\rt.jar
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> C:\Users\nicola.gentili\.gradle\caches\modules-2\files-2.1\org.scala-lang\scala-library\2.12.2\fe9780170207ebdabd4ac5bb335c82bd0aead480\scala-library-2.12.2.jar
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> C:\Users\nicola.gentili\.gradle\caches\modules-2\files-2.1\org.scoverage\scalac-scoverage-runtime_2.12\1.3.1\b51a70c1da41e07de83506ea12dc25fb994740a5\scalac-scoverage-runtime_2.12-1.3.1.jar
+source dependencies:
+   C:\Universita\PPS\pps-ci-lab-1\src\main\java\NicolaClass.java -> C:\Universita\PPS\pps-ci-lab-1\src\main\java\NicolaClass.java
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Logger.scala
+external dependencies:
+class names:
+   C:\Universita\PPS\pps-ci-lab-1\src\main\java\NicolaClass.java -> NicolaClass
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Logger.scala -> u07lab.BasicLogger
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Logger.scala -> u07lab.BasicLogger$
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Logger.scala -> u07lab.Logger
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Logger.scala -> u07lab.NullLogger
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Logger.scala -> u07lab.NullLogger$
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> u07lab.BasicCart
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> u07lab.BasicCart$
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> u07lab.BasicCatalog
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> u07lab.BasicWarehouse
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> u07lab.Cart
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> u07lab.Catalog
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> u07lab.Item
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> u07lab.Item$
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> u07lab.ItemDetails
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> u07lab.ItemDetails$
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> u07lab.Price
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> u07lab.Price$
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> u07lab.Product
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> u07lab.Product$
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> u07lab.Shopping
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> u07lab.TryShopping
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> u07lab.TryShopping$
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> u07lab.TryShopping$delayedInit$body
+   C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala -> u07lab.Warehouse

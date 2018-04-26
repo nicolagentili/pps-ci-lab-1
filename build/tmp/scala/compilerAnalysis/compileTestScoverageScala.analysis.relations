@@ -1,0 +1,24 @@
+products:
+   C:\Universita\PPS\pps-ci-lab-1\src\test\scala\u07lab\Shopping.scala -> C:\Universita\PPS\pps-ci-lab-1\build\classes\scala\testScoverage\u07lab\SetFunSpec.class
+   C:\Universita\PPS\pps-ci-lab-1\src\test\scala\u07lab\Shopping.scala -> C:\Universita\PPS\pps-ci-lab-1\build\classes\scala\testScoverage\u07lab\SetSpec.class
+   C:\Universita\PPS\pps-ci-lab-1\src\test\scala\u07lab\Shopping.scala -> C:\Universita\PPS\pps-ci-lab-1\build\classes\scala\testScoverage\u07lab\SetSuite.class
+binary dependencies:
+   C:\Universita\PPS\pps-ci-lab-1\src\test\scala\u07lab\Shopping.scala -> C:\Universita\PPS\pps-ci-lab-1\build\classes\scala\scoverage\u07lab\BasicCart$.class
+   C:\Universita\PPS\pps-ci-lab-1\src\test\scala\u07lab\Shopping.scala -> C:\Universita\PPS\pps-ci-lab-1\build\classes\scala\scoverage\u07lab\BasicCart.class
+   C:\Universita\PPS\pps-ci-lab-1\src\test\scala\u07lab\Shopping.scala -> C:\Universita\PPS\pps-ci-lab-1\build\classes\scala\scoverage\u07lab\Item$.class
+   C:\Universita\PPS\pps-ci-lab-1\src\test\scala\u07lab\Shopping.scala -> C:\Universita\PPS\pps-ci-lab-1\build\classes\scala\scoverage\u07lab\Item.class
+   C:\Universita\PPS\pps-ci-lab-1\src\test\scala\u07lab\Shopping.scala -> C:\Universita\PPS\pps-ci-lab-1\build\classes\scala\scoverage\u07lab\ItemDetails$.class
+   C:\Universita\PPS\pps-ci-lab-1\src\test\scala\u07lab\Shopping.scala -> C:\Universita\PPS\pps-ci-lab-1\build\classes\scala\scoverage\u07lab\ItemDetails.class
+   C:\Universita\PPS\pps-ci-lab-1\src\test\scala\u07lab\Shopping.scala -> C:\Universita\PPS\pps-ci-lab-1\build\classes\scala\scoverage\u07lab\Price$.class
+   C:\Universita\PPS\pps-ci-lab-1\src\test\scala\u07lab\Shopping.scala -> C:\Universita\PPS\pps-ci-lab-1\build\classes\scala\scoverage\u07lab\Price.class
+   C:\Universita\PPS\pps-ci-lab-1\src\test\scala\u07lab\Shopping.scala -> C:\Universita\PPS\pps-ci-lab-1\build\classes\scala\scoverage\u07lab\Product$.class
+   C:\Universita\PPS\pps-ci-lab-1\src\test\scala\u07lab\Shopping.scala -> C:\Universita\PPS\pps-ci-lab-1\build\classes\scala\scoverage\u07lab\Product.class
+   C:\Universita\PPS\pps-ci-lab-1\src\test\scala\u07lab\Shopping.scala -> C:\Users\nicola.gentili\.gradle\caches\modules-2\files-2.1\org.scala-lang\scala-library\2.12.2\fe9780170207ebdabd4ac5bb335c82bd0aead480\scala-library-2.12.2.jar
+   C:\Universita\PPS\pps-ci-lab-1\src\test\scala\u07lab\Shopping.scala -> C:\Users\nicola.gentili\.gradle\caches\modules-2\files-2.1\org.scalactic\scalactic_2.12\3.0.1\1d893666e3561505729e33a3ee124e22fbfed774\scalactic_2.12-3.0.1.jar
+   C:\Universita\PPS\pps-ci-lab-1\src\test\scala\u07lab\Shopping.scala -> C:\Users\nicola.gentili\.gradle\caches\modules-2\files-2.1\org.scalatest\scalatest_2.12\3.0.1\3a9dcb5a4308c4fd0f7424b5676f6fbf21c85131\scalatest_2.12-3.0.1.jar
+source dependencies:
+external dependencies:
+class names:
+   C:\Universita\PPS\pps-ci-lab-1\src\test\scala\u07lab\Shopping.scala -> u07lab.SetFunSpec
+   C:\Universita\PPS\pps-ci-lab-1\src\test\scala\u07lab\Shopping.scala -> u07lab.SetSpec
+   C:\Universita\PPS\pps-ci-lab-1\src\test\scala\u07lab\Shopping.scala -> u07lab.SetSuite

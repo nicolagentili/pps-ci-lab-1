@@ -1,0 +1,446 @@
+<scoverage 
+statement-count="109" statements-invoked="11" statement-rate="10.09" branch-rate="0.00" version="1.0" timestamp="1524733573859">
+    <packages>
+        <package name="u07lab" statement-count="109" statements-invoked="11" statement-rate="10.09">
+            <classes>
+                <class 
+                name="u07lab.Catalog" filename="src\main\scala\u07lab\Shopping.scala" statement-count="1" statements-invoked="0" statement-rate="0.00" branch-rate="0.00">
+                    <methods>
+                        <method 
+                        name="u07lab/Catalog/priceFor" statement-count="1" statements-invoked="0" statement-rate="0.00" branch-rate="0.00">
+                            <statements>
+                                <statement 
+                                package="u07lab" class="Catalog" class-type="Trait" full-class-name="u07lab.Catalog" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="priceFor" start="977" end="995" line="31" branch="false" invocation-count="0" ignored="false">
+</statement>
+                            </statements>
+</method>
+                    </methods>
+</class>
+                <class 
+                name="u07lab.BasicCart" filename="src\main\scala\u07lab\Shopping.scala" statement-count="20" statements-invoked="11" statement-rate="55.00" branch-rate="100.00">
+                    <methods>
+                        <method 
+                        name="u07lab/BasicCart/content" statement-count="3" statements-invoked="0" statement-rate="0.00" branch-rate="0.00">
+                            <statements>
+                                <statement 
+                                package="u07lab" class="BasicCart" class-type="Class" full-class-name="u07lab.BasicCart" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="content" start="700" end="718" line="23" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="BasicCart" class-type="Class" full-class-name="u07lab.BasicCart" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="content" start="665" end="726" line="23" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="BasicCart" class-type="Class" full-class-name="u07lab.BasicCart" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="content" start="675" end="675" line="23" branch="false" invocation-count="0" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="u07lab/BasicCart/totalCost" statement-count="3" statements-invoked="3" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="u07lab" class="BasicCart" class-type="Class" full-class-name="u07lab.BasicCart" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="totalCost" start="784" end="828" line="25" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="BasicCart" class-type="Class" full-class-name="u07lab.BasicCart" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="totalCost" start="812" end="827" line="25" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="BasicCart" class-type="Class" full-class-name="u07lab.BasicCart" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="totalCost" start="807" end="810" line="25" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="u07lab/BasicCart/size" statement-count="1" statements-invoked="1" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="u07lab" class="BasicCart" class-type="Class" full-class-name="u07lab.BasicCart" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="size" start="746" end="756" line="24" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="u07lab/BasicCart/add" statement-count="13" statements-invoked="7" statement-rate="53.85" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="u07lab" class="BasicCart" class-type="Class" full-class-name="u07lab.BasicCart" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="add" start="579" end="603" line="21" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="BasicCart" class-type="Class" full-class-name="u07lab.BasicCart" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="add" start="505" end="605" line="20" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="BasicCart" class-type="Class" full-class-name="u07lab.BasicCart" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="add" start="475" end="487" line="19" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="BasicCart" class-type="Class" full-class-name="u07lab.BasicCart" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="add" start="449" end="630" line="19" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="BasicCart" class-type="Class" full-class-name="u07lab.BasicCart" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="add" start="465" end="630" line="21" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="BasicCart" class-type="Class" full-class-name="u07lab.BasicCart" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="add" start="449" end="461" line="19" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="BasicCart" class-type="Class" full-class-name="u07lab.BasicCart" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="add" start="439" end="631" line="19" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="BasicCart" class-type="Class" full-class-name="u07lab.BasicCart" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="add" start="518" end="542" line="20" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="BasicCart" class-type="Class" full-class-name="u07lab.BasicCart" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="add" start="559" end="604" line="21" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="BasicCart" class-type="Class" full-class-name="u07lab.BasicCart" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="add" start="565" end="603" line="21" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="BasicCart" class-type="Class" full-class-name="u07lab.BasicCart" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="add" start="617" end="629" line="21" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="BasicCart" class-type="Class" full-class-name="u07lab.BasicCart" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="add" start="439" end="631" line="19" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="BasicCart" class-type="Class" full-class-name="u07lab.BasicCart" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="add" start="526" end="542" line="20" branch="false" invocation-count="0" ignored="false">
+</statement>
+                            </statements>
+</method>
+                    </methods>
+</class>
+                <class 
+                name="u07lab.NullLogger" filename="src\main\scala\u07lab\Logger.scala" statement-count="1" statements-invoked="0" statement-rate="0.00" branch-rate="0.00">
+                    <methods>
+                        <method 
+                        name="u07lab/NullLogger/log" statement-count="1" statements-invoked="0" statement-rate="0.00" branch-rate="0.00">
+                            <statements>
+                                <statement 
+                                package="u07lab" class="NullLogger" class-type="Object" full-class-name="u07lab.NullLogger" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Logger.scala" method="log" start="260" end="262" line="12" branch="false" invocation-count="0" ignored="false">
+</statement>
+                            </statements>
+</method>
+                    </methods>
+</class>
+                <class 
+                name="u07lab.TryShopping" filename="src\main\scala\u07lab\Shopping.scala" statement-count="39" statements-invoked="0" statement-rate="0.00" branch-rate="0.00">
+                    <methods>
+                        <method 
+                        name="u07lab/TryShopping/&lt;none&gt;" statement-count="39" statements-invoked="0" statement-rate="0.00" branch-rate="0.00">
+                            <statements>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="3170" end="3174" line="97" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="3263" end="3265" line="100" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="3067" end="3069" line="94" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="3217" end="3219" line="98" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="3280" end="3292" line="101" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="3020" end="3087" line="92" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="2978" end="2980" line="91" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="3045" end="3047" line="93" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="3103" end="3118" line="96" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="3240" end="3242" line="99" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="2850" end="2850" line="88" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="3322" end="3336" line="102" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="2951" end="2953" line="90" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="3305" end="3319" line="102" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="3226" end="3245" line="99" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="3161" end="3168" line="97" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="3045" end="3060" line="93" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="3297" end="3337" line="102" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="2912" end="2930" line="89" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="3137" end="3199" line="97" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="3067" end="3082" line="94" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="3249" end="3268" line="100" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="2934" end="2957" line="90" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="3203" end="3222" line="98" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="2961" end="2985" line="91" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="3103" end="3103" line="96" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="3003" end="3088" line="92" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="3220" end="3221" line="98" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="3272" end="3293" line="101" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="2982" end="2984" line="91" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="3243" end="3244" line="99" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="3150" end="3159" line="97" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="2853" end="2853" line="88" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="3051" end="3060" line="93" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="3305" end="3336" line="102" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="3073" end="3082" line="94" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="3176" end="3198" line="97" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="3266" end="3267" line="100" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="TryShopping" class-type="Object" full-class-name="u07lab.TryShopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="2955" end="2956" line="90" branch="false" invocation-count="0" ignored="false">
+</statement>
+                            </statements>
+</method>
+                    </methods>
+</class>
+                <class 
+                name="u07lab.Shopping" filename="src\main\scala\u07lab\Shopping.scala" statement-count="25" statements-invoked="0" statement-rate="0.00" branch-rate="0.00">
+                    <methods>
+                        <method 
+                        name="u07lab/Shopping/pick" statement-count="25" statements-invoked="0" statement-rate="0.00" branch-rate="0.00">
+                            <statements>
+                                <statement 
+                                package="u07lab" class="Shopping" class-type="Class" full-class-name="u07lab.Shopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="pick" start="2570" end="2584" line="78" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="Shopping" class-type="Class" full-class-name="u07lab.Shopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="pick" start="2269" end="2290" line="72" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="Shopping" class-type="Class" full-class-name="u07lab.Shopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="pick" start="2704" end="2780" line="81" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="Shopping" class-type="Class" full-class-name="u07lab.Shopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="pick" start="2319" end="2389" line="74" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="Shopping" class-type="Class" full-class-name="u07lab.Shopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="pick" start="2681" end="2682" line="79" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="Shopping" class-type="Class" full-class-name="u07lab.Shopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="pick" start="2445" end="2507" line="76" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="Shopping" class-type="Class" full-class-name="u07lab.Shopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="pick" start="2159" end="2172" line="69" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="Shopping" class-type="Class" full-class-name="u07lab.Shopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="pick" start="2603" end="2682" line="79" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="Shopping" class-type="Class" full-class-name="u07lab.Shopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="pick" start="2166" end="2171" line="69" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="Shopping" class-type="Class" full-class-name="u07lab.Shopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="pick" start="2666" end="2680" line="79" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="Shopping" class-type="Class" full-class-name="u07lab.Shopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="pick" start="2456" end="2506" line="76" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="Shopping" class-type="Class" full-class-name="u07lab.Shopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="pick" start="2310" end="2690" line="73" branch="true" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="Shopping" class-type="Class" full-class-name="u07lab.Shopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="pick" start="2526" end="2562" line="77" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="Shopping" class-type="Class" full-class-name="u07lab.Shopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="pick" start="2196" end="2244" line="71" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="Shopping" class-type="Class" full-class-name="u07lab.Shopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="pick" start="2793" end="2797" line="83" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="Shopping" class-type="Class" full-class-name="u07lab.Shopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="pick" start="2330" end="2388" line="74" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="Shopping" class-type="Class" full-class-name="u07lab.Shopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="pick" start="2647" end="2665" line="79" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="Shopping" class-type="Class" full-class-name="u07lab.Shopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="pick" start="2605" end="2636" line="79" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="Shopping" class-type="Class" full-class-name="u07lab.Shopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="pick" start="2704" end="2780" line="81" branch="true" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="Shopping" class-type="Class" full-class-name="u07lab.Shopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="pick" start="2637" end="2646" line="79" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="Shopping" class-type="Class" full-class-name="u07lab.Shopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="pick" start="2409" end="2437" line="75" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="Shopping" class-type="Class" full-class-name="u07lab.Shopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="pick" start="2207" end="2243" line="71" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="Shopping" class-type="Class" full-class-name="u07lab.Shopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="pick" start="2534" end="2561" line="77" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="Shopping" class-type="Class" full-class-name="u07lab.Shopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="pick" start="2592" end="2683" line="79" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="Shopping" class-type="Class" full-class-name="u07lab.Shopping" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="pick" start="2299" end="2308" line="73" branch="false" invocation-count="0" ignored="false">
+</statement>
+                            </statements>
+</method>
+                    </methods>
+</class>
+                <class 
+                name="u07lab.BasicWarehouse" filename="src\main\scala\u07lab\Shopping.scala" statement-count="18" statements-invoked="0" statement-rate="0.00" branch-rate="0.00">
+                    <methods>
+                        <method 
+                        name="u07lab/BasicWarehouse/get" statement-count="13" statements-invoked="0" statement-rate="0.00" branch-rate="0.00">
+                            <statements>
+                                <statement 
+                                package="u07lab" class="BasicWarehouse" class-type="Class" full-class-name="u07lab.BasicWarehouse" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="get" start="1823" end="1841" line="56" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="BasicWarehouse" class-type="Class" full-class-name="u07lab.BasicWarehouse" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="get" start="1662" end="1681" line="51" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="BasicWarehouse" class-type="Class" full-class-name="u07lab.BasicWarehouse" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="get" start="1856" end="1874" line="57" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="BasicWarehouse" class-type="Class" full-class-name="u07lab.BasicWarehouse" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="get" start="1746" end="1778" line="53" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="BasicWarehouse" class-type="Class" full-class-name="u07lab.BasicWarehouse" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="get" start="1788" end="1796" line="54" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="BasicWarehouse" class-type="Class" full-class-name="u07lab.BasicWarehouse" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="get" start="1856" end="1874" line="57" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="BasicWarehouse" class-type="Class" full-class-name="u07lab.BasicWarehouse" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="get" start="1638" end="1644" line="50" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="BasicWarehouse" class-type="Class" full-class-name="u07lab.BasicWarehouse" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="get" start="1758" end="1778" line="53" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="BasicWarehouse" class-type="Class" full-class-name="u07lab.BasicWarehouse" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="get" start="1884" end="1901" line="58" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="BasicWarehouse" class-type="Class" full-class-name="u07lab.BasicWarehouse" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="get" start="1718" end="1736" line="52" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="BasicWarehouse" class-type="Class" full-class-name="u07lab.BasicWarehouse" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="get" start="1746" end="1778" line="53" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="BasicWarehouse" class-type="Class" full-class-name="u07lab.BasicWarehouse" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="get" start="1868" end="1874" line="57" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="BasicWarehouse" class-type="Class" full-class-name="u07lab.BasicWarehouse" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="get" start="1570" end="1594" line="48" branch="false" invocation-count="0" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="u07lab/BasicWarehouse/supply" statement-count="4" statements-invoked="0" statement-rate="0.00" branch-rate="0.00">
+                            <statements>
+                                <statement 
+                                package="u07lab" class="BasicWarehouse" class-type="Class" full-class-name="u07lab.BasicWarehouse" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="supply" start="1436" end="1484" line="46" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="BasicWarehouse" class-type="Class" full-class-name="u07lab.BasicWarehouse" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="supply" start="1454" end="1483" line="46" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="BasicWarehouse" class-type="Class" full-class-name="u07lab.BasicWarehouse" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="supply" start="1436" end="1484" line="46" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="BasicWarehouse" class-type="Class" full-class-name="u07lab.BasicWarehouse" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="supply" start="1448" end="1484" line="46" branch="false" invocation-count="0" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="u07lab/BasicWarehouse/&lt;none&gt;" statement-count="1" statements-invoked="0" statement-rate="0.00" branch-rate="0.00">
+                            <statements>
+                                <statement 
+                                package="u07lab" class="BasicWarehouse" class-type="Class" full-class-name="u07lab.BasicWarehouse" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="&lt;none&gt;" start="1364" end="1382" line="45" branch="false" invocation-count="0" ignored="false">
+</statement>
+                            </statements>
+</method>
+                    </methods>
+</class>
+                <class 
+                name="u07lab.BasicLogger" filename="src\main\scala\u07lab\Logger.scala" statement-count="2" statements-invoked="0" statement-rate="0.00" branch-rate="0.00">
+                    <methods>
+                        <method 
+                        name="u07lab/BasicLogger/log" statement-count="2" statements-invoked="0" statement-rate="0.00" branch-rate="0.00">
+                            <statements>
+                                <statement 
+                                package="u07lab" class="BasicLogger" class-type="Class" full-class-name="u07lab.BasicLogger" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Logger.scala" method="log" start="158" end="177" line="8" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="BasicLogger" class-type="Class" full-class-name="u07lab.BasicLogger" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Logger.scala" method="log" start="166" end="176" line="8" branch="false" invocation-count="0" ignored="false">
+</statement>
+                            </statements>
+</method>
+                    </methods>
+</class>
+                <class 
+                name="u07lab.BasicCatalog" filename="src\main\scala\u07lab\Shopping.scala" statement-count="3" statements-invoked="0" statement-rate="0.00" branch-rate="0.00">
+                    <methods>
+                        <method 
+                        name="u07lab/BasicCatalog/priceFor" statement-count="2" statements-invoked="0" statement-rate="0.00" branch-rate="0.00">
+                            <statements>
+                                <statement 
+                                package="u07lab" class="BasicCatalog" class-type="Class" full-class-name="u07lab.BasicCatalog" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="priceFor" start="1139" end="1157" line="36" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="u07lab" class="BasicCatalog" class-type="Class" full-class-name="u07lab.BasicCatalog" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="priceFor" start="1133" end="1158" line="36" branch="false" invocation-count="0" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="u07lab/BasicCatalog/products" statement-count="1" statements-invoked="0" statement-rate="0.00" branch-rate="0.00">
+                            <statements>
+                                <statement 
+                                package="u07lab" class="BasicCatalog" class-type="Class" full-class-name="u07lab.BasicCatalog" source="C:\Universita\PPS\pps-ci-lab-1\src\main\scala\u07lab\Shopping.scala" method="products" start="1082" end="1085" line="35" branch="false" invocation-count="0" ignored="false">
+</statement>
+                            </statements>
+</method>
+                    </methods>
+</class>
+            </classes>
+        </package>
+    </packages>
+</scoverage>

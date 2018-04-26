@@ -1,0 +1,2379 @@
+<html>
+      <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title id="title">
+          src\main\scala\u07lab\Shopping.scala.html
+        </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.20.1/css/theme.default.min.css" type="text/css"/><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.20.1/js/jquery.tablesorter.min.js"></script><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" type="text/css"/><script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script><script type="text/javascript">
+        $(document).ready(function() {$(".tablesorter").tablesorter();});
+      </script>
+        <style>
+          table.codegrid { font-family: monospace; font-size: 12px; width: auto!important; }table.statementlist { width: auto!important; font-size: 13px; } table.codegrid td { padding: 0!important; border: 0!important } table td.linenumber { width: 40px!important; } 
+        </style>
+      </head>
+      <body style="font-family: monospace;">
+        <ul class="nav nav-tabs">
+          <li>
+            <a href="#codegrid" data-toggle="tab">Codegrid</a>
+          </li>
+          <li>
+            <a href="#statementlist" data-toggle="tab">Statement List</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="codegrid">
+            <pre style='font-size: 12pt; font-family: courier;'>1 <span style=''>package u07lab
+</span>2 <span style=''>
+</span>3 <span style=''>import java.util
+</span>4 <span style=''>
+</span>5 <span style=''>case class Product(name: String)
+</span>6 <span style=''>case class Price(value: Double)
+</span>7 <span style=''>case class Item(product: Product, details: ItemDetails)
+</span>8 <span style=''>case class ItemDetails(qty: Int, price: Price)
+</span>9 <span style=''>
+</span>10 <span style=''>trait Cart {
+</span>11 <span style=''>  def add(item: Item)
+</span>12 <span style=''>  def content: Set[Item]
+</span>13 <span style=''>  def size: Int
+</span>14 <span style=''>  def totalCost: Double
+</span>15 <span style=''>}
+</span>16 <span style=''>
+</span>17 <span style=''>class BasicCart(private var items: Map[Product, ItemDetails] = Map()) extends Cart {
+</span>18 <span style=''>  def add(item: Item) = {
+</span>19 <span style=''>    </span><span style='background: #AEF1AE'>items += (item.product -&gt; items.get(item.product).map(i =&gt;
+</span>20 <span style=''></span><span style='background: #AEF1AE'>      </span><span style='background: #F0ADAD'>i.copy(qty = i.qty + item.details.qty,
+</span>21 <span style=''></span><span style='background: #F0ADAD'>      price = Price(i.price.value+item.details.price.value))</span><span style='background: #AEF1AE'>).getOrElse(item.details))</span><span style=''>
+</span>22 <span style=''>  }
+</span>23 <span style=''>  def content: Set[Item] = </span><span style='background: #F0ADAD'>items.map { case (prod,details) =&gt; Item(prod,details) } toSet</span><span style=''>
+</span>24 <span style=''>  def size: Int = </span><span style='background: #AEF1AE'>items.size</span><span style=''>
+</span>25 <span style=''>  def totalCost: Double = </span><span style='background: #AEF1AE'>items.values.foldRight(0.0)(_.price.value+_)</span><span style=''>
+</span>26 <span style=''>}
+</span>27 <span style=''>
+</span>28 <span style=''>trait Catalog {
+</span>29 <span style=''>  def products: Iterable[(Product, Price)]
+</span>30 <span style=''>  def priceFor(p: Product, qty: Int): Price
+</span>31 <span style=''>  def priceFor(p: Product): Price = </span><span style='background: #F0ADAD'>priceFor(p, qty=1)</span><span style=''>
+</span>32 <span style=''>}
+</span>33 <span style=''>
+</span>34 <span style=''>class BasicCatalog(map: Map[Product,Price]) extends Catalog {
+</span>35 <span style=''>  def products = </span><span style='background: #F0ADAD'>map</span><span style=''>
+</span>36 <span style=''>  def priceFor(p: Product, qty: Int): Price = </span><span style='background: #F0ADAD'>Price(map(p).value * qty)</span><span style=''>
+</span>37 <span style=''>}
+</span>38 <span style=''>
+</span>39 <span style=''>trait Warehouse {
+</span>40 <span style=''>  def get(p: Product, qty: Int): (Product, Int)
+</span>41 <span style=''>  def supply(p: Product, qty: Int): Unit
+</span>42 <span style=''>}
+</span>43 <span style=''>
+</span>44 <span style=''>class BasicWarehouse extends Warehouse{
+</span>45 <span style=''>  private var products: Map[Product,Int] = </span><span style='background: #F0ADAD'>Map[Product,Int]()</span><span style=''>
+</span>46 <span style=''>  override def supply(p: Product, qty: Int): Unit = </span><span style='background: #F0ADAD'>products += p -&gt; (products.getOrElse(p,0) + qty)</span><span style=''>
+</span>47 <span style=''>  override def get(p: Product, qty: Int): (Product,Int) = {
+</span>48 <span style=''>    val availability = </span><span style='background: #F0ADAD'>products.getOrElse(p, 0)</span><span style=''>
+</span>49 <span style=''>    availability match {
+</span>50 <span style=''>      case 0 =&gt; </span><span style='background: #F0ADAD'>(p, 0)</span><span style=''>
+</span>51 <span style=''>      case _ if </span><span style='background: #F0ADAD'>availability &gt;= qty</span><span style=''> =&gt; {
+</span>52 <span style=''>        val newAvailability = </span><span style='background: #F0ADAD'>availability - qty</span><span style=''>
+</span>53 <span style=''>        </span><span style='background: #F0ADAD'>products += p -&gt; newAvailability</span><span style=''>
+</span>54 <span style=''>        </span><span style='background: #F0ADAD'>(p, qty)</span><span style=''>
+</span>55 <span style=''>      }
+</span>56 <span style=''>      case _ if </span><span style='background: #F0ADAD'>qty &gt; availability</span><span style=''> =&gt; {
+</span>57 <span style=''>        </span><span style='background: #F0ADAD'>products += p -&gt; 0</span><span style=''>
+</span>58 <span style=''>        </span><span style='background: #F0ADAD'>(p, availability)</span><span style=''>
+</span>59 <span style=''>      }
+</span>60 <span style=''>    }
+</span>61 <span style=''>  }
+</span>62 <span style=''>}
+</span>63 <span style=''>
+</span>64 <span style=''>class Shopping(private val warehouse: Warehouse,
+</span>65 <span style=''>               private val catalog: Catalog,
+</span>66 <span style=''>               private var cart: Cart,
+</span>67 <span style=''>               private val logger: Logger) {
+</span>68 <span style=''>  def pick(p: Product, qty: Int): Cart = {
+</span>69 <span style=''>    </span><span style='background: #F0ADAD'>assert(qty&gt;0)</span><span style=''> // precondition
+</span>70 <span style=''>
+</span>71 <span style=''>    </span><span style='background: #F0ADAD'>logger.log(s&quot;Trying to pick $qty pieces of $p.&quot;)</span><span style=''>
+</span>72 <span style=''>    val (_, howMany) = </span><span style='background: #F0ADAD'>warehouse.get(p, qty)</span><span style=''>
+</span>73 <span style=''>    if(</span><span style='background: #F0ADAD'>howMany&gt;0</span><span style=''>) </span><span style='background: #F0ADAD'>{
+</span>74 <span style=''></span><span style='background: #F0ADAD'>      logger.log(s&quot;The warehouse has $howMany pieces; adding them to cart.&quot;)
+</span>75 <span style=''></span><span style='background: #F0ADAD'>      val price = catalog.priceFor(p, howMany)
+</span>76 <span style=''></span><span style='background: #F0ADAD'>      logger.log(s&quot;$howMany pieces of $p collectively cost $price.&quot;)
+</span>77 <span style=''></span><span style='background: #F0ADAD'>      val item = Item(p, ItemDetails(howMany, price))
+</span>78 <span style=''></span><span style='background: #F0ADAD'>      cart.add(item)
+</span>79 <span style=''></span><span style='background: #F0ADAD'>      logger.log(s&quot;Updated cart: now it contains ${cart.size} items for total ${cart.totalCost}&quot;)
+</span>80 <span style=''></span><span style='background: #F0ADAD'>    }</span><span style=''> else{
+</span>81 <span style=''>      </span><span style='background: #F0ADAD'>logger.log(&quot;There are no pieces of the requested product in the warehouse.&quot;)</span><span style=''>
+</span>82 <span style=''>    }
+</span>83 <span style=''>    </span><span style='background: #F0ADAD'>cart</span><span style=''>
+</span>84 <span style=''>  }
+</span>85 <span style=''>}
+</span>86 <span style=''>
+</span>87 <span style=''>object TryShopping extends App {
+</span>88 <span style=''>  val (p1,p2) = (Product(&quot;Shoe&quot;), Product(&quot;Hat&quot;))
+</span>89 <span style=''>  val warehouse = </span><span style='background: #F0ADAD'>new BasicWarehouse</span><span style=''>
+</span>90 <span style=''>  </span><span style='background: #F0ADAD'>warehouse.supply(p1, 2)</span><span style=''>
+</span>91 <span style=''>  </span><span style='background: #F0ADAD'>warehouse.supply(p2, 50)</span><span style=''>
+</span>92 <span style=''>  val catalog = </span><span style='background: #F0ADAD'>new BasicCatalog(Map[Product,Price](
+</span>93 <span style=''></span><span style='background: #F0ADAD'>    p1 -&gt; Price(78),
+</span>94 <span style=''></span><span style='background: #F0ADAD'>    p2 -&gt; Price(34)
+</span>95 <span style=''></span><span style='background: #F0ADAD'>  ))</span><span style=''>
+</span>96 <span style=''>  val cart = </span><span style='background: #F0ADAD'>new BasicCart()</span><span style=''>
+</span>97 <span style=''>  val shopping = </span><span style='background: #F0ADAD'>new Shopping(warehouse, catalog, cart, new BasicLogger(&quot;&gt;&gt; &quot;))</span><span style=''>
+</span>98 <span style=''>  </span><span style='background: #F0ADAD'>shopping.pick(p1,1)</span><span style=''>
+</span>99 <span style=''>  </span><span style='background: #F0ADAD'>shopping.pick(p2,2)</span><span style=''>
+</span>100 <span style=''>  </span><span style='background: #F0ADAD'>shopping.pick(p1,2)</span><span style=''>
+</span>101 <span style=''>  </span><span style='background: #F0ADAD'>println(cart.content)</span><span style=''>
+</span>102 <span style=''>  </span><span style='background: #F0ADAD'>println(&quot;Total cost: &quot; + cart.totalCost)</span><span style=''>
+</span>103 <span style=''>}
+</span></pre>
+          </div>
+          <div class="tab-pane" id="statementlist">
+            <table cellspacing="0" cellpadding="0" class="table statementlist">
+      <tr>
+        <th>Line</th>
+        <th>Stmt Id</th>
+        <th>Pos</th>
+        <th>Tree</th>
+        <th>Symbol</th>
+        <th>Code</th>
+      </tr><tr>
+        <td>
+          19
+        </td>
+        <td>
+          5
+        </td>
+        <td>
+          475
+          -
+          487
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          u07lab.Item.product
+        </td>
+        <td style="background: #AEF1AE">
+          item.product
+        </td>
+      </tr><tr>
+        <td>
+          19
+        </td>
+        <td>
+          14
+        </td>
+        <td>
+          449
+          -
+          630
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Predef.ArrowAssoc.-&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          scala.Predef.ArrowAssoc[u07lab.Product](item.product).-&gt;[u07lab.ItemDetails](BasicCart.this.items.get(item.product).map[u07lab.ItemDetails](((i: u07lab.ItemDetails) =&gt; i.copy(i.qty.+(item.details.qty), Price.apply(i.price.value.+(item.details.price.value))))).getOrElse[u07lab.ItemDetails](item.details))
+        </td>
+      </tr><tr>
+        <td>
+          19
+        </td>
+        <td>
+          4
+        </td>
+        <td>
+          449
+          -
+          461
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          u07lab.Item.product
+        </td>
+        <td style="background: #AEF1AE">
+          item.product
+        </td>
+      </tr><tr>
+        <td>
+          19
+        </td>
+        <td>
+          16
+        </td>
+        <td>
+          439
+          -
+          631
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          u07lab.BasicCart.items_=
+        </td>
+        <td style="background: #AEF1AE">
+          BasicCart.this.items_=(BasicCart.this.items.+[u07lab.ItemDetails](scala.Predef.ArrowAssoc[u07lab.Product](item.product).-&gt;[u07lab.ItemDetails](BasicCart.this.items.get(item.product).map[u07lab.ItemDetails](((i: u07lab.ItemDetails) =&gt; i.copy(i.qty.+(item.details.qty), Price.apply(i.price.value.+(item.details.price.value))))).getOrElse[u07lab.ItemDetails](item.details))))
+        </td>
+      </tr><tr>
+        <td>
+          19
+        </td>
+        <td>
+          15
+        </td>
+        <td>
+          439
+          -
+          631
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.immutable.Map.+
+        </td>
+        <td style="background: #AEF1AE">
+          BasicCart.this.items.+[u07lab.ItemDetails](scala.Predef.ArrowAssoc[u07lab.Product](item.product).-&gt;[u07lab.ItemDetails](BasicCart.this.items.get(item.product).map[u07lab.ItemDetails](((i: u07lab.ItemDetails) =&gt; i.copy(i.qty.+(item.details.qty), Price.apply(i.price.value.+(item.details.price.value))))).getOrElse[u07lab.ItemDetails](item.details)))
+        </td>
+      </tr><tr>
+        <td>
+          20
+        </td>
+        <td>
+          11
+        </td>
+        <td>
+          505
+          -
+          605
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          u07lab.ItemDetails.copy
+        </td>
+        <td style="background: #F0ADAD">
+          i.copy(i.qty.+(item.details.qty), Price.apply(i.price.value.+(item.details.price.value)))
+        </td>
+      </tr><tr>
+        <td>
+          20
+        </td>
+        <td>
+          7
+        </td>
+        <td>
+          518
+          -
+          542
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.+
+        </td>
+        <td style="background: #F0ADAD">
+          i.qty.+(item.details.qty)
+        </td>
+      </tr><tr>
+        <td>
+          20
+        </td>
+        <td>
+          6
+        </td>
+        <td>
+          526
+          -
+          542
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          u07lab.ItemDetails.qty
+        </td>
+        <td style="background: #F0ADAD">
+          item.details.qty
+        </td>
+      </tr><tr>
+        <td>
+          21
+        </td>
+        <td>
+          8
+        </td>
+        <td>
+          579
+          -
+          603
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          u07lab.Price.value
+        </td>
+        <td style="background: #F0ADAD">
+          item.details.price.value
+        </td>
+      </tr><tr>
+        <td>
+          21
+        </td>
+        <td>
+          13
+        </td>
+        <td>
+          465
+          -
+          630
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Option.getOrElse
+        </td>
+        <td style="background: #AEF1AE">
+          BasicCart.this.items.get(item.product).map[u07lab.ItemDetails](((i: u07lab.ItemDetails) =&gt; i.copy(i.qty.+(item.details.qty), Price.apply(i.price.value.+(item.details.price.value))))).getOrElse[u07lab.ItemDetails](item.details)
+        </td>
+      </tr><tr>
+        <td>
+          21
+        </td>
+        <td>
+          10
+        </td>
+        <td>
+          559
+          -
+          604
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          u07lab.Price.apply
+        </td>
+        <td style="background: #F0ADAD">
+          Price.apply(i.price.value.+(item.details.price.value))
+        </td>
+      </tr><tr>
+        <td>
+          21
+        </td>
+        <td>
+          9
+        </td>
+        <td>
+          565
+          -
+          603
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Double.+
+        </td>
+        <td style="background: #F0ADAD">
+          i.price.value.+(item.details.price.value)
+        </td>
+      </tr><tr>
+        <td>
+          21
+        </td>
+        <td>
+          12
+        </td>
+        <td>
+          617
+          -
+          629
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          u07lab.Item.details
+        </td>
+        <td style="background: #AEF1AE">
+          item.details
+        </td>
+      </tr><tr>
+        <td>
+          23
+        </td>
+        <td>
+          17
+        </td>
+        <td>
+          700
+          -
+          718
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          u07lab.Item.apply
+        </td>
+        <td style="background: #F0ADAD">
+          Item.apply(prod, details)
+        </td>
+      </tr><tr>
+        <td>
+          23
+        </td>
+        <td>
+          19
+        </td>
+        <td>
+          665
+          -
+          726
+        </td>
+        <td>
+          TypeApply
+        </td>
+        <td>
+          scala.collection.TraversableOnce.toSet
+        </td>
+        <td style="background: #F0ADAD">
+          BasicCart.this.items.map[u07lab.Item, scala.collection.immutable.Iterable[u07lab.Item]](((x0$1: (u07lab.Product, u07lab.ItemDetails)) =&gt; x0$1 match {
+  case (_1: u07lab.Product, _2: u07lab.ItemDetails)(u07lab.Product, u07lab.ItemDetails)((prod @ _), (details @ _)) =&gt; Item.apply(prod, details)
+}))(immutable.this.Iterable.canBuildFrom[u07lab.Item]).toSet[u07lab.Item]
+        </td>
+      </tr><tr>
+        <td>
+          23
+        </td>
+        <td>
+          18
+        </td>
+        <td>
+          675
+          -
+          675
+        </td>
+        <td>
+          TypeApply
+        </td>
+        <td>
+          scala.collection.immutable.Iterable.canBuildFrom
+        </td>
+        <td style="background: #F0ADAD">
+          immutable.this.Iterable.canBuildFrom[u07lab.Item]
+        </td>
+      </tr><tr>
+        <td>
+          24
+        </td>
+        <td>
+          20
+        </td>
+        <td>
+          746
+          -
+          756
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.collection.TraversableOnce.size
+        </td>
+        <td style="background: #AEF1AE">
+          BasicCart.this.items.size
+        </td>
+      </tr><tr>
+        <td>
+          25
+        </td>
+        <td>
+          23
+        </td>
+        <td>
+          784
+          -
+          828
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.IterableLike.foldRight
+        </td>
+        <td style="background: #AEF1AE">
+          BasicCart.this.items.values.foldRight[Double](0.0)(((x$1: u07lab.ItemDetails, x$2: Double) =&gt; x$1.price.value.+(x$2)))
+        </td>
+      </tr><tr>
+        <td>
+          25
+        </td>
+        <td>
+          22
+        </td>
+        <td>
+          812
+          -
+          827
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Double.+
+        </td>
+        <td style="background: #AEF1AE">
+          x$1.price.value.+(x$2)
+        </td>
+      </tr><tr>
+        <td>
+          25
+        </td>
+        <td>
+          21
+        </td>
+        <td>
+          807
+          -
+          810
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          0.0
+        </td>
+      </tr><tr>
+        <td>
+          31
+        </td>
+        <td>
+          24
+        </td>
+        <td>
+          977
+          -
+          995
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          u07lab.Catalog.priceFor
+        </td>
+        <td style="background: #F0ADAD">
+          Catalog.this.priceFor(p, 1)
+        </td>
+      </tr><tr>
+        <td>
+          35
+        </td>
+        <td>
+          25
+        </td>
+        <td>
+          1082
+          -
+          1085
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          u07lab.BasicCatalog.map
+        </td>
+        <td style="background: #F0ADAD">
+          BasicCatalog.this.map
+        </td>
+      </tr><tr>
+        <td>
+          36
+        </td>
+        <td>
+          26
+        </td>
+        <td>
+          1139
+          -
+          1157
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Double.*
+        </td>
+        <td style="background: #F0ADAD">
+          BasicCatalog.this.map.apply(p).value.*(qty)
+        </td>
+      </tr><tr>
+        <td>
+          36
+        </td>
+        <td>
+          27
+        </td>
+        <td>
+          1133
+          -
+          1158
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          u07lab.Price.apply
+        </td>
+        <td style="background: #F0ADAD">
+          Price.apply(BasicCatalog.this.map.apply(p).value.*(qty))
+        </td>
+      </tr><tr>
+        <td>
+          45
+        </td>
+        <td>
+          28
+        </td>
+        <td>
+          1364
+          -
+          1382
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.generic.GenMapFactory.apply
+        </td>
+        <td style="background: #F0ADAD">
+          scala.Predef.Map.apply[u07lab.Product, Int]()
+        </td>
+      </tr><tr>
+        <td>
+          46
+        </td>
+        <td>
+          32
+        </td>
+        <td>
+          1436
+          -
+          1484
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          u07lab.BasicWarehouse.products_=
+        </td>
+        <td style="background: #F0ADAD">
+          BasicWarehouse.this.products_=(BasicWarehouse.this.products.+[Int](scala.Predef.ArrowAssoc[u07lab.Product](p).-&gt;[Int](BasicWarehouse.this.products.getOrElse[Int](p, 0).+(qty))))
+        </td>
+      </tr><tr>
+        <td>
+          46
+        </td>
+        <td>
+          29
+        </td>
+        <td>
+          1454
+          -
+          1483
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.+
+        </td>
+        <td style="background: #F0ADAD">
+          BasicWarehouse.this.products.getOrElse[Int](p, 0).+(qty)
+        </td>
+      </tr><tr>
+        <td>
+          46
+        </td>
+        <td>
+          31
+        </td>
+        <td>
+          1436
+          -
+          1484
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.immutable.Map.+
+        </td>
+        <td style="background: #F0ADAD">
+          BasicWarehouse.this.products.+[Int](scala.Predef.ArrowAssoc[u07lab.Product](p).-&gt;[Int](BasicWarehouse.this.products.getOrElse[Int](p, 0).+(qty)))
+        </td>
+      </tr><tr>
+        <td>
+          46
+        </td>
+        <td>
+          30
+        </td>
+        <td>
+          1448
+          -
+          1484
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Predef.ArrowAssoc.-&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          scala.Predef.ArrowAssoc[u07lab.Product](p).-&gt;[Int](BasicWarehouse.this.products.getOrElse[Int](p, 0).+(qty))
+        </td>
+      </tr><tr>
+        <td>
+          48
+        </td>
+        <td>
+          33
+        </td>
+        <td>
+          1570
+          -
+          1594
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.MapLike.getOrElse
+        </td>
+        <td style="background: #F0ADAD">
+          BasicWarehouse.this.products.getOrElse[Int](p, 0)
+        </td>
+      </tr><tr>
+        <td>
+          50
+        </td>
+        <td>
+          34
+        </td>
+        <td>
+          1638
+          -
+          1644
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Tuple2.apply
+        </td>
+        <td style="background: #F0ADAD">
+          scala.Tuple2.apply[u07lab.Product, Int](p, 0)
+        </td>
+      </tr><tr>
+        <td>
+          51
+        </td>
+        <td>
+          35
+        </td>
+        <td>
+          1662
+          -
+          1681
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.&gt;=
+        </td>
+        <td style="background: #F0ADAD">
+          availability.&gt;=(qty)
+        </td>
+      </tr><tr>
+        <td>
+          52
+        </td>
+        <td>
+          36
+        </td>
+        <td>
+          1718
+          -
+          1736
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.-
+        </td>
+        <td style="background: #F0ADAD">
+          availability.-(qty)
+        </td>
+      </tr><tr>
+        <td>
+          53
+        </td>
+        <td>
+          38
+        </td>
+        <td>
+          1746
+          -
+          1778
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.immutable.Map.+
+        </td>
+        <td style="background: #F0ADAD">
+          BasicWarehouse.this.products.+[Int](scala.Predef.ArrowAssoc[u07lab.Product](p).-&gt;[Int](newAvailability))
+        </td>
+      </tr><tr>
+        <td>
+          53
+        </td>
+        <td>
+          37
+        </td>
+        <td>
+          1758
+          -
+          1778
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Predef.ArrowAssoc.-&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          scala.Predef.ArrowAssoc[u07lab.Product](p).-&gt;[Int](newAvailability)
+        </td>
+      </tr><tr>
+        <td>
+          53
+        </td>
+        <td>
+          39
+        </td>
+        <td>
+          1746
+          -
+          1778
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          u07lab.BasicWarehouse.products_=
+        </td>
+        <td style="background: #F0ADAD">
+          BasicWarehouse.this.products_=(BasicWarehouse.this.products.+[Int](scala.Predef.ArrowAssoc[u07lab.Product](p).-&gt;[Int](newAvailability)))
+        </td>
+      </tr><tr>
+        <td>
+          54
+        </td>
+        <td>
+          40
+        </td>
+        <td>
+          1788
+          -
+          1796
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Tuple2.apply
+        </td>
+        <td style="background: #F0ADAD">
+          scala.Tuple2.apply[u07lab.Product, Int](p, qty)
+        </td>
+      </tr><tr>
+        <td>
+          56
+        </td>
+        <td>
+          41
+        </td>
+        <td>
+          1823
+          -
+          1841
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          qty.&gt;(availability)
+        </td>
+      </tr><tr>
+        <td>
+          57
+        </td>
+        <td>
+          44
+        </td>
+        <td>
+          1856
+          -
+          1874
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          u07lab.BasicWarehouse.products_=
+        </td>
+        <td style="background: #F0ADAD">
+          BasicWarehouse.this.products_=(BasicWarehouse.this.products.+[Int](scala.Predef.ArrowAssoc[u07lab.Product](p).-&gt;[Int](0)))
+        </td>
+      </tr><tr>
+        <td>
+          57
+        </td>
+        <td>
+          43
+        </td>
+        <td>
+          1856
+          -
+          1874
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.immutable.Map.+
+        </td>
+        <td style="background: #F0ADAD">
+          BasicWarehouse.this.products.+[Int](scala.Predef.ArrowAssoc[u07lab.Product](p).-&gt;[Int](0))
+        </td>
+      </tr><tr>
+        <td>
+          57
+        </td>
+        <td>
+          42
+        </td>
+        <td>
+          1868
+          -
+          1874
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Predef.ArrowAssoc.-&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          scala.Predef.ArrowAssoc[u07lab.Product](p).-&gt;[Int](0)
+        </td>
+      </tr><tr>
+        <td>
+          58
+        </td>
+        <td>
+          45
+        </td>
+        <td>
+          1884
+          -
+          1901
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Tuple2.apply
+        </td>
+        <td style="background: #F0ADAD">
+          scala.Tuple2.apply[u07lab.Product, Int](p, availability)
+        </td>
+      </tr><tr>
+        <td>
+          69
+        </td>
+        <td>
+          47
+        </td>
+        <td>
+          2159
+          -
+          2172
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Predef.assert
+        </td>
+        <td style="background: #F0ADAD">
+          scala.Predef.assert(qty.&gt;(0))
+        </td>
+      </tr><tr>
+        <td>
+          69
+        </td>
+        <td>
+          46
+        </td>
+        <td>
+          2166
+          -
+          2171
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          qty.&gt;(0)
+        </td>
+      </tr><tr>
+        <td>
+          71
+        </td>
+        <td>
+          49
+        </td>
+        <td>
+          2196
+          -
+          2244
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          u07lab.Logger.log
+        </td>
+        <td style="background: #F0ADAD">
+          Shopping.this.logger.log(scala.StringContext.apply(&quot;Trying to pick &quot;, &quot; pieces of &quot;, &quot;.&quot;).s(qty, p))
+        </td>
+      </tr><tr>
+        <td>
+          71
+        </td>
+        <td>
+          48
+        </td>
+        <td>
+          2207
+          -
+          2243
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.StringContext.s
+        </td>
+        <td style="background: #F0ADAD">
+          scala.StringContext.apply(&quot;Trying to pick &quot;, &quot; pieces of &quot;, &quot;.&quot;).s(qty, p)
+        </td>
+      </tr><tr>
+        <td>
+          72
+        </td>
+        <td>
+          50
+        </td>
+        <td>
+          2269
+          -
+          2290
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          u07lab.Warehouse.get
+        </td>
+        <td style="background: #F0ADAD">
+          Shopping.this.warehouse.get(p, qty)
+        </td>
+      </tr><tr>
+        <td>
+          73
+        </td>
+        <td>
+          67
+        </td>
+        <td>
+          2310
+          -
+          2690
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          {
+  Shopping.this.logger.log(scala.StringContext.apply(&quot;The warehouse has &quot;, &quot; pieces; adding them to cart.&quot;).s(howMany));
+  val price: u07lab.Price = Shopping.this.catalog.priceFor(p, howMany);
+  Shopping.this.logger.log(scala.StringContext.apply(&quot;&quot;, &quot; pieces of &quot;, &quot; collectively cost &quot;, &quot;.&quot;).s(howMany, p, price));
+  val item: u07lab.Item = Item.apply(p, ItemDetails.apply(howMany, price));
+  Shopping.this.cart.add(item);
+  Shopping.this.logger.log(scala.StringContext.apply(&quot;Updated cart: now it contains &quot;, &quot; items for total &quot;, &quot;&quot;).s(Shopping.this.cart.size, Shopping.this.cart.totalCost))
+}
+        </td>
+      </tr><tr>
+        <td>
+          73
+        </td>
+        <td>
+          51
+        </td>
+        <td>
+          2299
+          -
+          2308
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          howMany.&gt;(0)
+        </td>
+      </tr><tr>
+        <td>
+          74
+        </td>
+        <td>
+          53
+        </td>
+        <td>
+          2319
+          -
+          2389
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          u07lab.Logger.log
+        </td>
+        <td style="background: #F0ADAD">
+          Shopping.this.logger.log(scala.StringContext.apply(&quot;The warehouse has &quot;, &quot; pieces; adding them to cart.&quot;).s(howMany))
+        </td>
+      </tr><tr>
+        <td>
+          74
+        </td>
+        <td>
+          52
+        </td>
+        <td>
+          2330
+          -
+          2388
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.StringContext.s
+        </td>
+        <td style="background: #F0ADAD">
+          scala.StringContext.apply(&quot;The warehouse has &quot;, &quot; pieces; adding them to cart.&quot;).s(howMany)
+        </td>
+      </tr><tr>
+        <td>
+          75
+        </td>
+        <td>
+          54
+        </td>
+        <td>
+          2409
+          -
+          2437
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          u07lab.Catalog.priceFor
+        </td>
+        <td style="background: #F0ADAD">
+          Shopping.this.catalog.priceFor(p, howMany)
+        </td>
+      </tr><tr>
+        <td>
+          76
+        </td>
+        <td>
+          56
+        </td>
+        <td>
+          2445
+          -
+          2507
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          u07lab.Logger.log
+        </td>
+        <td style="background: #F0ADAD">
+          Shopping.this.logger.log(scala.StringContext.apply(&quot;&quot;, &quot; pieces of &quot;, &quot; collectively cost &quot;, &quot;.&quot;).s(howMany, p, price))
+        </td>
+      </tr><tr>
+        <td>
+          76
+        </td>
+        <td>
+          55
+        </td>
+        <td>
+          2456
+          -
+          2506
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.StringContext.s
+        </td>
+        <td style="background: #F0ADAD">
+          scala.StringContext.apply(&quot;&quot;, &quot; pieces of &quot;, &quot; collectively cost &quot;, &quot;.&quot;).s(howMany, p, price)
+        </td>
+      </tr><tr>
+        <td>
+          77
+        </td>
+        <td>
+          58
+        </td>
+        <td>
+          2526
+          -
+          2562
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          u07lab.Item.apply
+        </td>
+        <td style="background: #F0ADAD">
+          Item.apply(p, ItemDetails.apply(howMany, price))
+        </td>
+      </tr><tr>
+        <td>
+          77
+        </td>
+        <td>
+          57
+        </td>
+        <td>
+          2534
+          -
+          2561
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          u07lab.ItemDetails.apply
+        </td>
+        <td style="background: #F0ADAD">
+          ItemDetails.apply(howMany, price)
+        </td>
+      </tr><tr>
+        <td>
+          78
+        </td>
+        <td>
+          59
+        </td>
+        <td>
+          2570
+          -
+          2584
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          u07lab.Cart.add
+        </td>
+        <td style="background: #F0ADAD">
+          Shopping.this.cart.add(item)
+        </td>
+      </tr><tr>
+        <td>
+          79
+        </td>
+        <td>
+          62
+        </td>
+        <td>
+          2681
+          -
+          2682
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          &quot;&quot;
+        </td>
+      </tr><tr>
+        <td>
+          79
+        </td>
+        <td>
+          65
+        </td>
+        <td>
+          2603
+          -
+          2682
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.StringContext.s
+        </td>
+        <td style="background: #F0ADAD">
+          scala.StringContext.apply(&quot;Updated cart: now it contains &quot;, &quot; items for total &quot;, &quot;&quot;).s(Shopping.this.cart.size, Shopping.this.cart.totalCost)
+        </td>
+      </tr><tr>
+        <td>
+          79
+        </td>
+        <td>
+          64
+        </td>
+        <td>
+          2666
+          -
+          2680
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          u07lab.Cart.totalCost
+        </td>
+        <td style="background: #F0ADAD">
+          Shopping.this.cart.totalCost
+        </td>
+      </tr><tr>
+        <td>
+          79
+        </td>
+        <td>
+          61
+        </td>
+        <td>
+          2647
+          -
+          2665
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          &quot; items for total &quot;
+        </td>
+      </tr><tr>
+        <td>
+          79
+        </td>
+        <td>
+          60
+        </td>
+        <td>
+          2605
+          -
+          2636
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          &quot;Updated cart: now it contains &quot;
+        </td>
+      </tr><tr>
+        <td>
+          79
+        </td>
+        <td>
+          63
+        </td>
+        <td>
+          2637
+          -
+          2646
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          u07lab.Cart.size
+        </td>
+        <td style="background: #F0ADAD">
+          Shopping.this.cart.size
+        </td>
+      </tr><tr>
+        <td>
+          79
+        </td>
+        <td>
+          66
+        </td>
+        <td>
+          2592
+          -
+          2683
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          u07lab.Logger.log
+        </td>
+        <td style="background: #F0ADAD">
+          Shopping.this.logger.log(scala.StringContext.apply(&quot;Updated cart: now it contains &quot;, &quot; items for total &quot;, &quot;&quot;).s(Shopping.this.cart.size, Shopping.this.cart.totalCost))
+        </td>
+      </tr><tr>
+        <td>
+          81
+        </td>
+        <td>
+          68
+        </td>
+        <td>
+          2704
+          -
+          2780
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          u07lab.Logger.log
+        </td>
+        <td style="background: #F0ADAD">
+          Shopping.this.logger.log(&quot;There are no pieces of the requested product in the warehouse.&quot;)
+        </td>
+      </tr><tr>
+        <td>
+          81
+        </td>
+        <td>
+          69
+        </td>
+        <td>
+          2704
+          -
+          2780
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          u07lab.Logger.log
+        </td>
+        <td style="background: #F0ADAD">
+          Shopping.this.logger.log(&quot;There are no pieces of the requested product in the warehouse.&quot;)
+        </td>
+      </tr><tr>
+        <td>
+          83
+        </td>
+        <td>
+          70
+        </td>
+        <td>
+          2793
+          -
+          2797
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          u07lab.Shopping.cart
+        </td>
+        <td style="background: #F0ADAD">
+          Shopping.this.cart
+        </td>
+      </tr><tr>
+        <td>
+          88
+        </td>
+        <td>
+          71
+        </td>
+        <td>
+          2850
+          -
+          2850
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.Tuple2._1
+        </td>
+        <td style="background: #F0ADAD">
+          TryShopping.this.x$3._1
+        </td>
+      </tr><tr>
+        <td>
+          88
+        </td>
+        <td>
+          72
+        </td>
+        <td>
+          2853
+          -
+          2853
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.Tuple2._2
+        </td>
+        <td style="background: #F0ADAD">
+          TryShopping.this.x$3._2
+        </td>
+      </tr><tr>
+        <td>
+          89
+        </td>
+        <td>
+          73
+        </td>
+        <td>
+          2912
+          -
+          2930
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          u07lab.BasicWarehouse.&lt;init&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          new BasicWarehouse()
+        </td>
+      </tr><tr>
+        <td>
+          90
+        </td>
+        <td>
+          74
+        </td>
+        <td>
+          2951
+          -
+          2953
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          u07lab.TryShopping.p1
+        </td>
+        <td style="background: #F0ADAD">
+          TryShopping.this.p1
+        </td>
+      </tr><tr>
+        <td>
+          90
+        </td>
+        <td>
+          76
+        </td>
+        <td>
+          2934
+          -
+          2957
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          u07lab.BasicWarehouse.supply
+        </td>
+        <td style="background: #F0ADAD">
+          TryShopping.this.warehouse.supply(TryShopping.this.p1, 2)
+        </td>
+      </tr><tr>
+        <td>
+          90
+        </td>
+        <td>
+          75
+        </td>
+        <td>
+          2955
+          -
+          2956
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          2
+        </td>
+      </tr><tr>
+        <td>
+          91
+        </td>
+        <td>
+          77
+        </td>
+        <td>
+          2978
+          -
+          2980
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          u07lab.TryShopping.p2
+        </td>
+        <td style="background: #F0ADAD">
+          TryShopping.this.p2
+        </td>
+      </tr><tr>
+        <td>
+          91
+        </td>
+        <td>
+          79
+        </td>
+        <td>
+          2961
+          -
+          2985
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          u07lab.BasicWarehouse.supply
+        </td>
+        <td style="background: #F0ADAD">
+          TryShopping.this.warehouse.supply(TryShopping.this.p2, 50)
+        </td>
+      </tr><tr>
+        <td>
+          91
+        </td>
+        <td>
+          78
+        </td>
+        <td>
+          2982
+          -
+          2984
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          50
+        </td>
+      </tr><tr>
+        <td>
+          92
+        </td>
+        <td>
+          86
+        </td>
+        <td>
+          3020
+          -
+          3087
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.generic.GenMapFactory.apply
+        </td>
+        <td style="background: #F0ADAD">
+          scala.Predef.Map.apply[u07lab.Product, u07lab.Price](scala.Predef.ArrowAssoc[u07lab.Product](TryShopping.this.p1).-&gt;[u07lab.Price](Price.apply(78.0)), scala.Predef.ArrowAssoc[u07lab.Product](TryShopping.this.p2).-&gt;[u07lab.Price](Price.apply(34.0)))
+        </td>
+      </tr><tr>
+        <td>
+          92
+        </td>
+        <td>
+          87
+        </td>
+        <td>
+          3003
+          -
+          3088
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          u07lab.BasicCatalog.&lt;init&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          new BasicCatalog(scala.Predef.Map.apply[u07lab.Product, u07lab.Price](scala.Predef.ArrowAssoc[u07lab.Product](TryShopping.this.p1).-&gt;[u07lab.Price](Price.apply(78.0)), scala.Predef.ArrowAssoc[u07lab.Product](TryShopping.this.p2).-&gt;[u07lab.Price](Price.apply(34.0))))
+        </td>
+      </tr><tr>
+        <td>
+          93
+        </td>
+        <td>
+          80
+        </td>
+        <td>
+          3045
+          -
+          3047
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          u07lab.TryShopping.p1
+        </td>
+        <td style="background: #F0ADAD">
+          TryShopping.this.p1
+        </td>
+      </tr><tr>
+        <td>
+          93
+        </td>
+        <td>
+          82
+        </td>
+        <td>
+          3045
+          -
+          3060
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Predef.ArrowAssoc.-&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          scala.Predef.ArrowAssoc[u07lab.Product](TryShopping.this.p1).-&gt;[u07lab.Price](Price.apply(78.0))
+        </td>
+      </tr><tr>
+        <td>
+          93
+        </td>
+        <td>
+          81
+        </td>
+        <td>
+          3051
+          -
+          3060
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          u07lab.Price.apply
+        </td>
+        <td style="background: #F0ADAD">
+          Price.apply(78.0)
+        </td>
+      </tr><tr>
+        <td>
+          94
+        </td>
+        <td>
+          83
+        </td>
+        <td>
+          3067
+          -
+          3069
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          u07lab.TryShopping.p2
+        </td>
+        <td style="background: #F0ADAD">
+          TryShopping.this.p2
+        </td>
+      </tr><tr>
+        <td>
+          94
+        </td>
+        <td>
+          85
+        </td>
+        <td>
+          3067
+          -
+          3082
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Predef.ArrowAssoc.-&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          scala.Predef.ArrowAssoc[u07lab.Product](TryShopping.this.p2).-&gt;[u07lab.Price](Price.apply(34.0))
+        </td>
+      </tr><tr>
+        <td>
+          94
+        </td>
+        <td>
+          84
+        </td>
+        <td>
+          3073
+          -
+          3082
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          u07lab.Price.apply
+        </td>
+        <td style="background: #F0ADAD">
+          Price.apply(34.0)
+        </td>
+      </tr><tr>
+        <td>
+          96
+        </td>
+        <td>
+          89
+        </td>
+        <td>
+          3103
+          -
+          3118
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          u07lab.BasicCart.&lt;init&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          new BasicCart(u07lab.this.BasicCart.&lt;init&gt;$default$1)
+        </td>
+      </tr><tr>
+        <td>
+          96
+        </td>
+        <td>
+          88
+        </td>
+        <td>
+          3103
+          -
+          3103
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          u07lab.BasicCart.&lt;init&gt;$default$1
+        </td>
+        <td style="background: #F0ADAD">
+          u07lab.this.BasicCart.&lt;init&gt;$default$1
+        </td>
+      </tr><tr>
+        <td>
+          97
+        </td>
+        <td>
+          92
+        </td>
+        <td>
+          3170
+          -
+          3174
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          u07lab.TryShopping.cart
+        </td>
+        <td style="background: #F0ADAD">
+          TryShopping.this.cart
+        </td>
+      </tr><tr>
+        <td>
+          97
+        </td>
+        <td>
+          91
+        </td>
+        <td>
+          3161
+          -
+          3168
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          u07lab.TryShopping.catalog
+        </td>
+        <td style="background: #F0ADAD">
+          TryShopping.this.catalog
+        </td>
+      </tr><tr>
+        <td>
+          97
+        </td>
+        <td>
+          94
+        </td>
+        <td>
+          3137
+          -
+          3199
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          u07lab.Shopping.&lt;init&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          new Shopping(TryShopping.this.warehouse, TryShopping.this.catalog, TryShopping.this.cart, new BasicLogger(&quot;&gt;&gt; &quot;))
+        </td>
+      </tr><tr>
+        <td>
+          97
+        </td>
+        <td>
+          90
+        </td>
+        <td>
+          3150
+          -
+          3159
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          u07lab.TryShopping.warehouse
+        </td>
+        <td style="background: #F0ADAD">
+          TryShopping.this.warehouse
+        </td>
+      </tr><tr>
+        <td>
+          97
+        </td>
+        <td>
+          93
+        </td>
+        <td>
+          3176
+          -
+          3198
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          u07lab.BasicLogger.&lt;init&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          new BasicLogger(&quot;&gt;&gt; &quot;)
+        </td>
+      </tr><tr>
+        <td>
+          98
+        </td>
+        <td>
+          95
+        </td>
+        <td>
+          3217
+          -
+          3219
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          u07lab.TryShopping.p1
+        </td>
+        <td style="background: #F0ADAD">
+          TryShopping.this.p1
+        </td>
+      </tr><tr>
+        <td>
+          98
+        </td>
+        <td>
+          97
+        </td>
+        <td>
+          3203
+          -
+          3222
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          u07lab.Shopping.pick
+        </td>
+        <td style="background: #F0ADAD">
+          TryShopping.this.shopping.pick(TryShopping.this.p1, 1)
+        </td>
+      </tr><tr>
+        <td>
+          98
+        </td>
+        <td>
+          96
+        </td>
+        <td>
+          3220
+          -
+          3221
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          1
+        </td>
+      </tr><tr>
+        <td>
+          99
+        </td>
+        <td>
+          98
+        </td>
+        <td>
+          3240
+          -
+          3242
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          u07lab.TryShopping.p2
+        </td>
+        <td style="background: #F0ADAD">
+          TryShopping.this.p2
+        </td>
+      </tr><tr>
+        <td>
+          99
+        </td>
+        <td>
+          100
+        </td>
+        <td>
+          3226
+          -
+          3245
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          u07lab.Shopping.pick
+        </td>
+        <td style="background: #F0ADAD">
+          TryShopping.this.shopping.pick(TryShopping.this.p2, 2)
+        </td>
+      </tr><tr>
+        <td>
+          99
+        </td>
+        <td>
+          99
+        </td>
+        <td>
+          3243
+          -
+          3244
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          2
+        </td>
+      </tr><tr>
+        <td>
+          100
+        </td>
+        <td>
+          101
+        </td>
+        <td>
+          3263
+          -
+          3265
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          u07lab.TryShopping.p1
+        </td>
+        <td style="background: #F0ADAD">
+          TryShopping.this.p1
+        </td>
+      </tr><tr>
+        <td>
+          100
+        </td>
+        <td>
+          103
+        </td>
+        <td>
+          3249
+          -
+          3268
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          u07lab.Shopping.pick
+        </td>
+        <td style="background: #F0ADAD">
+          TryShopping.this.shopping.pick(TryShopping.this.p1, 2)
+        </td>
+      </tr><tr>
+        <td>
+          100
+        </td>
+        <td>
+          102
+        </td>
+        <td>
+          3266
+          -
+          3267
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          2
+        </td>
+      </tr><tr>
+        <td>
+          101
+        </td>
+        <td>
+          104
+        </td>
+        <td>
+          3280
+          -
+          3292
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          u07lab.BasicCart.content
+        </td>
+        <td style="background: #F0ADAD">
+          TryShopping.this.cart.content
+        </td>
+      </tr><tr>
+        <td>
+          101
+        </td>
+        <td>
+          105
+        </td>
+        <td>
+          3272
+          -
+          3293
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Predef.println
+        </td>
+        <td style="background: #F0ADAD">
+          scala.Predef.println(TryShopping.this.cart.content)
+        </td>
+      </tr><tr>
+        <td>
+          102
+        </td>
+        <td>
+          107
+        </td>
+        <td>
+          3322
+          -
+          3336
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          u07lab.BasicCart.totalCost
+        </td>
+        <td style="background: #F0ADAD">
+          TryShopping.this.cart.totalCost
+        </td>
+      </tr><tr>
+        <td>
+          102
+        </td>
+        <td>
+          106
+        </td>
+        <td>
+          3305
+          -
+          3319
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          &quot;Total cost: &quot;
+        </td>
+      </tr><tr>
+        <td>
+          102
+        </td>
+        <td>
+          109
+        </td>
+        <td>
+          3297
+          -
+          3337
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Predef.println
+        </td>
+        <td style="background: #F0ADAD">
+          scala.Predef.println(&quot;Total cost: &quot;.+(TryShopping.this.cart.totalCost))
+        </td>
+      </tr><tr>
+        <td>
+          102
+        </td>
+        <td>
+          108
+        </td>
+        <td>
+          3305
+          -
+          3336
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          java.lang.String.+
+        </td>
+        <td style="background: #F0ADAD">
+          &quot;Total cost: &quot;.+(TryShopping.this.cart.totalCost)
+        </td>
+      </tr>
+    </table>
+          </div>
+        </div>
+      </body>
+    </html>
